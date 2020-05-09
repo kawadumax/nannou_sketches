@@ -1907,6 +1907,9 @@ dependencies = [
 [[package]]
 name = "sketch_02_hole"
 version = "0.1.0"
+dependencies = [
+ "nannou",
+]
 
 [[package]]
 name = "slab"
