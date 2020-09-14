@@ -1,4 +1,7 @@
-use nannou
+use nannou::prelude::*;
+
+//mainでmodしたのを辿るようにuseする
+use crate::particle::*;
 
 pub struct ParticleSystem {
   particles: Vec<Particle>,
