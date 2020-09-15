@@ -1915,6 +1915,7 @@ dependencies = [
 name = "sketch_03_wing"
 version = "0.1.0"
 dependencies = [
+ "lazy_static",
  "nannou",
 ]
 

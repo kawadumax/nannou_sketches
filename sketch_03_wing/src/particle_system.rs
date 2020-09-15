@@ -30,7 +30,7 @@ impl ParticleSystem {
 
   pub fn draw(&self, draw: &Draw) {
     for p in self.particles.iter() {
-      p.display(&draw);
+      p.display(draw);
     }
   }
 }

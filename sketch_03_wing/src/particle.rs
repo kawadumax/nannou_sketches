@@ -8,7 +8,8 @@ pub struct Particle {
   velocity: Vector2,
   acceleration: Vector2,
   life_span: f32,
-  hue: f32
+  hue: f32,
+  age: f32,
 }
 
 impl Particle {
@@ -18,12 +19,14 @@ impl Particle {
     let position = l + vec2(Self::random_f32_width(WINDOW_WIDTH as f32), 0.0);
     let life_span = 500.0;
     let hue = random_f32() * 20.0;
+    let age = 0.0;
     Particle {
       acceleration,
       velocity,
       position,
       life_span,
-      hue
+      hue,
+      age
     }
   }
 
@@ -32,6 +35,7 @@ impl Particle {
     self.velocity += self.acceleration;
     self.position -= self.velocity / 2.0;
     self.life_span -= 1.0;
+    self.age += 0.1;
   }
 
   // Method to display
@@ -59,18 +63,19 @@ impl Particle {
 
   fn draw_wing(&self, draw: &Draw){
     let radius = 50.0;
-    let angle = 30.0; 
+    // let angle = (30.0 % self.age) * PI / 360.0 - PI/6.0;
+    let angle = PI / 6.0 * self.age.cos();
     draw
       .line()
       .stroke_weight(3.0)
       .start(self.position)
-      .end(self.position + vec2(radius * sin(angle), 20.0))
+      .end(self.position + vec2(radius * angle.cos(), radius * angle.sin()))
       .hsla(self.hue, 0.8, 0.8, self.life_span / 255.0);
     draw
       .line()
       .stroke_weight(3.0)
       .start(self.position)
-      .end(self.position + vec2(-40.0, 20.0))
+      .end(self.position + vec2(-radius * angle.cos(), radius * angle.sin()))
       .hsla(self.hue, 0.8, 0.8, self.life_span / 255.0);
   }
 }

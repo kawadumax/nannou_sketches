@@ -27,7 +27,9 @@ fn model(app: &App) -> Model {
   app.new_window().size(WINDOW_WIDTH, WINDOW_HEIGHT).view(view).build().unwrap();
   let (_w, h) = app.window_rect().w_h();
   let ps = ParticleSystem::new(pt2(0.0, (h as f32 / 2.0) - 50.0));
-  Model { ps }
+  Model {
+    ps
+  }
 }
 
 fn update(_app: &App, m: &mut Model, _update: Update) {
@@ -38,10 +40,10 @@ fn update(_app: &App, m: &mut Model, _update: Update) {
 
 fn view(app: &App, m: &Model, frame: Frame) {
   // Begin drawing
-  let draw = app.draw();
+  let draw = &(app.draw());
   draw.background().color(WHITE);
 
-  m.ps.draw(&draw);
+  m.ps.draw(draw);
 
   // Write the result of our drawing to the window's frame.
   draw.to_frame(app, &frame).unwrap();
