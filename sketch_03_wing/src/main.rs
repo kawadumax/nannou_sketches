@@ -1,9 +1,3 @@
-// The Nature of Code
-// Daniel Shiffman
-// http://natureofcode.com
-//
-// example 4-03: Particle System Type
-
 use nannou::prelude::*;
 
 mod particle;
