@@ -29,7 +29,7 @@ impl ParticleSystem {
   }
 
   pub fn draw(&self, draw: &Draw) {
-    for p in self.particles.iter() {
+    for p in self.particles.iter().rev() {
       p.display(draw);
     }
   }

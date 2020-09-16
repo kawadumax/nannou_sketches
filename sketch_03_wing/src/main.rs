@@ -45,6 +45,18 @@ fn view(app: &App, m: &Model, frame: Frame) {
 
   m.ps.draw(draw);
 
+  let file_path = captured_frame_path(app, &frame);
+  app.main_window().capture_frame(file_path);
+
   // Write the result of our drawing to the window's frame.
   draw.to_frame(app, &frame).unwrap();
+}
+
+fn captured_frame_path(app: &App, frame: &Frame) -> std::path::PathBuf {
+    app.project_path()
+        .expect("failed to locate `project_path`")
+        .join("./cap/")
+        .join(app.exe_name().unwrap())
+        .join(format!("{:04}", frame.nth()))
+        .with_extension("png")
 }
