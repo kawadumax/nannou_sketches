@@ -57,6 +57,38 @@ impl Particle {
 
     self.draw_wing(draw);
     
+    let eye_size = vec2(2.0 , 3.0);
+    draw
+      .scale(scale)
+      .ellipse()
+      .x((self.position.x + 4.0 * scale)/scale)
+      .y((self.position.y + 4.0 * scale)/scale)
+      .wh(eye_size)
+      .hsl(self.hue, 0.8, 0.1);
+    draw
+      .scale(scale)
+      .ellipse()
+      .x((self.position.x - 4.0 * scale)/scale)
+      .y((self.position.y + 4.0 * scale)/scale)
+      .wh(eye_size)
+      .hsl(self.hue, 0.8, 0.1);
+    
+    // くちばし
+    // let p1 = pt2(self.position.x / scale , (self.position.x + 2.0 * scale)/scale);
+    // let p2 = pt2((self.position.x + 2.0 * scale)/scale, (self.position.x - 2.0 * scale)/scale);
+    // let p3 = pt2((self.position.x - 2.0 * scale)/scale, (self.position.x - 2.0 * scale)/scale);
+    // let p4 = pt2(self.position.x / scale , (self.position.x + 2.0 * scale)/scale);
+    let p1 = pt2(0.0, 2.0);
+    let p2 = pt2(-2.0, 0.0);
+    let p4 = pt2(2.0, 0.0);
+    let p3 = pt2(0.0 , -2.0);
+    draw
+      .scale(scale)
+      .quad()
+      .xy(self.position/scale)
+      .hsl(self.hue, 0.8, 0.1)
+      .points(p1, p2, p3,p4);
+    
   }
 
   // Is the poarticel still useful?
