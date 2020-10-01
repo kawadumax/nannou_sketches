@@ -1920,6 +1920,13 @@ dependencies = [
 ]
 
 [[package]]
+name = "sketch_04_lightning"
+version = "0.1.0"
+dependencies = [
+ "nannou",
+]
+
+[[package]]
 name = "slab"
 version = "0.4.2"
 source = "registry+https://github.com/rust-lang/crates.io-index"

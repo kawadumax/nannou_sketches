@@ -3,5 +3,6 @@
 members = [
     "sketch_01_ramdom_walk",
     "sketch_02_hole",
-    "sketch_03_wing"
+    "sketch_03_wing",
+    "sketch_04_lightning"
 ]
