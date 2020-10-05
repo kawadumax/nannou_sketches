@@ -1,5 +1,5 @@
 [package]
-name = "sketch_04_lightning"
+name = "sketch_04_cantor"
 version = "0.1.0"
 authors = ["kawadumax <kazmax7@gmail.com>"]
 edition = "2018"
