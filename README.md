@@ -43,3 +43,10 @@ ffmpeg -framerate 30 -i %04d.png -vcodec libx264 -pix_fmt yuv420p -r 60 out.mp4
 >縦横比: 1:2.39～2.39:1の範囲
 >最大フレームレート: 40fps
 >最大ビットレート: 25Mbps
+
+# ワークスペースをcargoで実行
+親フォルダを開いた状態で、プロジェクトを指定して実行する場合に、以下のようなコマンドがあります。
+
+```shell
+cargo run --bin プロジェクト名 --release
+```
