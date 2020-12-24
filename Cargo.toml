@@ -5,5 +5,6 @@ members = [
     "sketch_02_hole",
     "sketch_03_wing",
     "sketch_04_cantor",
-    "sketch_05_tree"
+    "sketch_05_tree",
+    "sketch_06_clock"
 ]
