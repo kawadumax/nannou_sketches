@@ -1,45 +1,42 @@
 use nannou::prelude::*;
 
-// mod particle;
-// // use particle::*;
+mod clock;
+use clock::*;
 
-// mod particle_system;
-// use particle_system::*;
-
-// const WINDOW_WIDTH: u32 = 640;
-// const WINDOW_HEIGHT: u32 = 640;
+const WINDOW_WIDTH: u32 = 640;
+const WINDOW_HEIGHT: u32 = 640;
 
 fn main() {
-//   nannou::app(model).update(update).run();
-  nannou::sketch(view).run();
+  nannou::app(model).update(update).run();
 }
 
-// struct Model {
-//   ps: ParticleSystem,
-// }
+struct Model {
+  clock: Clock,
+}
 
-// fn model(app: &App) -> Model {
-//   app.new_window().size(WINDOW_WIDTH, WINDOW_HEIGHT).view(view).build().unwrap();
-//   let (_w, h) = app.window_rect().w_h();
-//   let ps = ParticleSystem::new(pt2(0.0, (h as f32 / 2.0) - 50.0));
-//   Model {
-//     ps
-//   }
-// }
+fn model(app: &App) -> Model {
+  app.new_window().size(WINDOW_WIDTH, WINDOW_HEIGHT).view(view).build().unwrap();
+  // let (_w, h) = app.window_rect().w_h();
+  let clock = Clock::new();
+  Model {
+    clock
+  }
+}
 
-// fn update(_app: &App, m: &mut Model, _update: Update) {
-//   if _app.elapsed_frames() % 5 == 0 { m.ps.add_particle();};
+fn update(_app: &App, m: &mut Model, _update: Update) {
+  // if _app.elapsed_frames() % 5 == 0 { m.ps.add_particle();};
 
-//   m.ps.update();
-// }
+  m.clock.update();
+}
 
-fn view(app: &App, frame: Frame) {
+fn view(app: &App, m: &Model, frame: Frame) {
   // Begin drawing
   let draw = &(app.draw());
   draw.background().color(WHITE);
 
-//   m.ps.draw(draw);
+  m.clock.draw(draw);
 
+// gifに書き出したいときにコメントイン
 //   let file_path = captured_frame_path(app, &frame);
 //   app.main_window().capture_frame(file_path);
 
@@ -47,6 +44,7 @@ fn view(app: &App, frame: Frame) {
   draw.to_frame(app, &frame).unwrap();
 }
 
+// gifに書き出したいときにコメントイン
 // fn captured_frame_path(app: &App, frame: &Frame) -> std::path::PathBuf {
 //     app.project_path()
 //         .expect("failed to locate `project_path`")
